@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="CaRA">
+  <meta name="keywords" content="CPD, CaRA, LoRA, ViT, Swin">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CaRA</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/cara_favicon.png" style="border-radius: 100%;">
+   <!-- (A) LOAD THE MATHJAX LIBRARY -->
+<!-- DOCS: https://docs.mathjax.org/en/latest/basic/mathematics.html -->
+<!-- DEMO: https://github.com/mathjax/MathJax-demos-web -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://lokiv.dev/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://arxiv.org/pdf/2206.01509">
+            Canonical Convolutional Neural Networks
+          </a>
+          <a class="navbar-item" href="https://arxiv.org/pdf/2211.06241">
+            3D semantic segmentation-OOD Benchmark
+          </a>
+          <a class="navbar-item" href="https://lokiv.dev/frechet_wavelet_distance/">
+            Fréchet Wavelet Distance: A Metric for Image Generation
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <!-- <img src="./static/images/fwd_logo.png" style="width:20%;max-width:20%;object-fit: cover; border-radius: 50%;"/> -->
+          <h1 class="title is-1 publication-title">Canonical Rank Adaptation (CaRA): An Efficient Fine-Tuning Strategy for Vision Transformers</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://lokiv.dev/">Lokesh Veeramacheneni</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="http://wolter.tech/">Moritz Wolter</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://hildekuehne.github.io/">Hilde Kuehne</a><sup>2,3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://pages.iai.uni-bonn.de/gall_juergen/">Juergen Gall</a><sup>1,4</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Bonn</span>
+            <span class="author-block"><sup>2</sup>University of Tuebingen</span>
+            <span class="author-block"><sup>3</sup>MIT-IBM Watson AI Lab</span>
+            <span class="author-block"><sup>4</sup>Lamarr Institute for Machine Learning and Artificial Intelligence</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://openreview.net/pdf?id=vexHifrbJg"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="bi bi-file-pdf-fill"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/BonnBytes/CaRA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body is-centered">
+      <img src="./static/images/cara_intro.png" style="display: block; margin-left: 235px" width="500"/>
+      <h2 class="subtitle has-text-centered">
+        Figure 1: Illustration of fine-tuning a single query projection layer in one transformer block using LoRA on the left and CaRA on the right. CaRA represents the low-rank update in CPD form.
+      </h2>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+            <p>
+                Modern methods for fine-tuning Vision Transformers, such as Low-Rank Adaptation (LoRA) and its variants, demonstrate impressive performance. However, these methods ignore the high-dimensional nature of Multi-Head Attention (MHA) weight tensors. To address this limitation,we propose Canonical Rank Adaptation (CaRA). CaRA leverages tensor mathematics, first by tensorising the transformer into two different tensors: one for projection layers in MHA and the other for feed-forward layers. Second, the tensorised formulation is fine-tuned using the low-rank adaptation in the Canonical-Polyadic Decomposition (CPD) form. Employing CaRA efficiently minimises the number of trainable parameters. Experimentally, CaRA outperforms existing Parameter-Efficient Fine-Tuning (PEFT) methods in visual classification benchmarks such as the Visual Task Adaptation Benchmark (VTAB)-1k and the Fine-Grained Visual Categorization (FGVC) benchmark.
+            </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method</h2>
+        <h2 class="content has-text-justified">
+        <p>
+          While LoRA exhibit significant advantages compared to full fine-tuning, previous works demonstrated that tensor based fine-tuning is highly efficient. Additionally, given the high-dimensional nature of MHA, it is evident that utilising tensor representations, especially the CPD form, for low-rank updates provides a compact and expressive approach, all while offering a smaller parameter count. In this paper, we present a novel tensorisation of ViT, followed by CaRA representation of low-rank updates.
+        </p>
+        </h2>
+        <div class="method-figure">
+          <img class="pdf" src="./static/images/cara_tensorisation.png" />
+          <h2 class="subtitle has-text-centered">
+            Figure 2: CaRA's tensorisation process. 
+            <!-- Figure on the left depicts ViT with \(l\) blocks next to each other. We stack all three-dimensional query, key, and value projections across all blocks to result in four-dimensional tensor (bottom). Similarly, we stack remaining feed forward layers to create another three-dimensional tensor (top). -->
+            <br /><br />
+          </h2>
+        </div>
+
+        <h2 class="content has-text-justified">
+          <p>
+            <b><i>Tensorisation:</i></b><br/>
+            Our tensorisation approach involves creating two tensors: one for MHA's projection layer and second for the feed-forward layers. This will explicitly allow us to represent the low-rank update for MHA's projection layers at higher dimensions. First we stack the query, key, and value projection matrices i.e., \(W^Q \in \mathbb{R}^{d_{\text{model}}\times d_k}\), \(W^K \in \mathbb{R}^{d_{\text{model}}\times d_k}\), and \(W^V \in \mathbb{R}^{d_{\text{model}}\times d_v}\) for the individual head \(i\) in a block resulting in
+            $$E_i = [W_i^Q, W_i^K, W_i^V] \in \mathbb{R}^{3\times d_{\text{model}}\times d_h},$$ 
+            where \(d_h = d_k = d_v\) and enclosing square brace represent stacking operation. Furthermore, we stack the resulting tensors \(E_i\) across all \(h\) heads for a specific transformer block \(j\)
+            $$L_j = [E_1, E_2, ...., E_h] \in \mathbb{R}^{3\times d_{\text{model}}\times h\times d_h}.$$
+            Finally, stack the tensors across all the \(l\) blocks of transformer, resulting in
+            $$W^{\text{mha}} = [L_1, L_2, ..., L_l] \in \mathbb{R}^{3\times l\times d_{\text{model}}\times h\times d_h}.$$
+            <i>We observe that combined representation of \(3\) and \(l\) preforms better compared to above five-dimensional representation</i> (see Section 5.2 in paper). Following this, we represent the \(W^{\text{mha}}\) as four-dimensional tensor \(\mathbb{R}^{3l\times d_{\text{model}}\times h\times d_h}\).
+
+            Similarly, we stack the layers \(W^O, W^{\text{up}},\) and \(W^{\text{down}}\) across all the \(l\) transformer blocks to result in a tensor \(W^{\text{ffn}} \in \mathbb{R}^{9l\times d_{\text{model}}\times d_{\text{model}}}\).
+          </p>
+        </h2>
+        <br/>
+        <h2 class="content has-text-justified">
+          <p>
+            <b><i>Low-Rank Update:</i></b><br/>
+            With the tensorised network in place, we propose a novel low-rank update representing using CPD format for fine-tuning the ViT. Using CPD offers benefits in terms of parameter efficiency and stable performance. The low-rank update for \(W^{\text{mha}}\) and \(W^{\text{ffn}}\) is given as
+            $$ \delta W^{\text{mha}} =  \{ \lambda^A; A^{(1)}, A^{(2)}, A^{(3)}, A^{(4)}\} = \sum_{r=1}^R \lambda_r^A a_r^{(1)} \circ a_r^{(2)} \circ a_r^{(3)} \circ a_r^{(4)},$$
+            $$ \delta W^{\text{ffn}} =  \{ \lambda^B; B^{(1)}, B^{(2)}, B^{(3)}\} = \sum_{r=1}^R \lambda_r^B b_r^{(1)} \circ b_r^{(2)} \circ b_r^{(3)}.$$
+
+            Figure 1 depicts our weight update for one of the query projections in a specific transformer block. Additionally, below table presents a comparative summary of various tensor-based low-rank updates.
+          </p>
+        </h2>
+        <div class="method-figure">
+          <img src="./static/images/cara_update_comparison.png" style="display: block; margin: auto;" width="400"/>
+          <!-- <h2 class="subtitle has-text-centered">
+            Table 1: Comparison of low-rank updates for various fine-tuning methods.
+            </h2> -->
+        </div>
+      </div>
+    </div>
+    <!--/ Paper Method. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop is-centered ">
+        <div class="content has-text-justified ">
+
+  <h2 class="title is-3 is-centered has-text-centered ">Results</h2>
+        <h3 class="title is-4">Visual Task Adaptation Benchmark</h3>
+          <p>
+            VTAB-1k evaluation results with ViT-B/16 backbone on wide range of 19 datasets. We average the number of parameters over gorup-wise mean values and indicate both group-wise mean and overall mean accuracy.
+          </p>
+        </div>
+        <div class="method-figure">
+          <img src="./static/images/cara_vtab_results.png" />
+        </div>
+        <br/>
+        <!--/ Layers ablation. -->
+
+        <!-- Qualitative Examples. -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px;">
+          <div class="content has-text-justified ">
+            <h3 class="title is-4">FGVC benchmark</h3>
+              <p>
+                Evaluation results of ImageNet-21k pretrained ViT-B/16 on FGVC benchmark.
+              </p>
+            <div class="is-centered has-text-centered">
+              <img src="./static/images/cara_fgvc_results.png"
+                    class="interpolation-image"
+                    alt="Interpolation end reference image." width="400" />
+            </div>
+          </div>
+          <div class="content has-text-justified ">
+            <h3 class="title is-4">Fine-Tuning ViT-L</h3>
+            <p>
+                Evaluation results of ImageNet-21k pretrained ViT-L on series of Image classification datasets.
+              </p>
+            <div class="is-centered has-text-centered">
+              <img src="./static/images/cara_vit_l_results.png"
+                    class="interpolation-image"
+                    alt="Interpolation end reference image." width="400" />
+            </div>
+          </div>
+    </div>
+    </div>
+    </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop is-centered ">
+        <div class="content has-text-justified ">
+
+  <h2 class="title is-3 is-centered has-text-centered ">Ablations</h2>
+        <h3 class="title is-4">Rank Robustness</h3>
+          <p>
+            CaRA's robustness to varying rank in terms of number of trainable parameters (left) and accuracy (right) compared to other tensor-based fine-tuning methods. Number of parameters for Tucker (FacT-TK) and Tensor-Train (FacT-TT) representations grow faster than CaRA due to the presence of tensors in their low-rank update formulation. Whereas CaRA representation only contain matrices. The effect of exponential parameter growth negatively impacts performance of Tensor-Train and Tucker represents, CaRA's performance slightly increase with rank.
+          </p>
+        </div>
+        <div class="method-figure">
+          <img src="./static/images/cara_rank_robustness_ablation.png" style="display: block; margin: auto;" width="600"/>
+        </div>
+        <br/>
+
+        <divclass="content has-text-justified ">
+        <h3 class="title is-4">Interpretability</h3>
+        <p>
+          We attempt to understand CaRA's capability by studying saliency maps from Integrated gradients on FGVC dataset. We observe concentrated gradient over specific parts for rank 32, while rank 16 show more spread out gradient activations.
+        </p>
+        <div class="is-centered has-text-centered">
+          <img src="./static/images/cara_integrated_grads.png"
+                 class="interpolation-image"
+                 alt="Interpolation end reference image." width="800" />
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{
+veeramacheneni2025canonical,
+title={Canonical Rank Adaptation: An Efficient Fine-Tuning Strategy for Vision Transformers},
+author={Lokesh Veeramacheneni and Moritz Wolter and Hilde Kuehne and Juergen Gall},
+booktitle={Forty-second International Conference on Machine Learning},
+year={2025},
+url={https://openreview.net/forum?id=vexHifrbJg}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
